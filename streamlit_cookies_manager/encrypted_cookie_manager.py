@@ -18,6 +18,7 @@ def key_from_parameters(salt: bytes, iterations: int, password: str):
         length=32,
         salt=salt,
         iterations=iterations,
+        backend=PBKDF2HMACBackend
     )
 
     return base64.urlsafe_b64encode(kdf.derive(password.encode('utf-8')))
